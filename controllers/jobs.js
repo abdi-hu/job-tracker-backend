@@ -17,7 +17,19 @@ async function create(req, res) {
 		res.status(401).json({ error: "something went wrong" });
 	}
 }
+async function update(req, res) {
+	try {
+		const updatedSkill = await Job.findByIdAndUpdate(req.params.id, req.body, {
+			new: true,
+		});
+		req.query.uid = updatedSkill.uid;
+		index(req, res);
+	} catch (error) {
+		res.status(401).json({ error: "something went wrong" });
+	}
+}
 module.exports = {
 	index,
 	create,
+	update,
 };
