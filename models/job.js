@@ -9,6 +9,7 @@ const updateSchema = new Schema(
 );
 const jobSchema = new Schema(
 	{
+		uid: String,
 		companyName: String,
 		title: String,
 		dateApplied: Date,

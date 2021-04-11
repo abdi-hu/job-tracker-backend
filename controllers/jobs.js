@@ -1,15 +1,21 @@
 const Job = require("../models/job");
 
 async function index(req, res) {
-	const jobs = await Job.find({}).sort("companyName");
-	res.status(200).json(jobs);
+	try {
+		const jobs = await Job.find({ uid: req.query.uid }).sort("companyName");
+		res.status(200).json(jobs);
+	} catch (error) {
+		res.status(401).json({ error: "something went wrong" });
+	}
 }
 async function create(req, res) {
 	try {
-		console.log(req.body);
 		const job = await Job.create(req.body);
-		res.status(201).json(job);
-	} catch (error) {}
+		req.query.uid = job.uid;
+		index(req, res);
+	} catch (error) {
+		res.status(401).json({ error: "something went wrong" });
+	}
 }
 module.exports = {
 	index,
