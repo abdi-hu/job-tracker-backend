@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const updateSchema = new Schema(
-	{
-		text: String,
-	},
-	{ timestamps: true }
-);
+// const updateSchema = new Schema(
+// 	{
+// 		text: String,
+// 	},
+// 	{ timestamps: true }
+// );
 const jobSchema = new Schema(
 	{
 		uid: String,
@@ -20,7 +20,7 @@ const jobSchema = new Schema(
 			type: Boolean,
 			default: true,
 		},
-		updates: [updateSchema],
+		updates: Array,
 	},
 	{ timestamps: true }
 );
