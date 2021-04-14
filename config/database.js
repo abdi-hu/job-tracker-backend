@@ -1,7 +1,6 @@
 //TODO: establish connection to mongoDB
 const mongoose = require("mongoose");
 const db = mongoose.connection;
-require("dotenv").config();
 
 mongoose.connect(`${process.env.DB_URI}`, {
 	useNewUrlParser: true,
