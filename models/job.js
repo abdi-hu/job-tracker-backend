@@ -1,18 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// const updateSchema = new Schema(
-// 	{
-// 		text: String,
-// 	},
-// 	{ timestamps: true }
-// );
 const jobSchema = new Schema(
 	{
 		uid: String,
 		companyName: String,
 		title: String,
 		dateApplied: Date,
+		discription: String,
 		location: String,
 		siteApplied: String,
 		email: String,
@@ -20,7 +15,7 @@ const jobSchema = new Schema(
 			type: Boolean,
 			default: true,
 		},
-		updates: Array,
+		updates: [],
 	},
 	{ timestamps: true }
 );
